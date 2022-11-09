@@ -3,13 +3,14 @@ import App from "../App";
 import About from "../components/About/About";
 import Login from "../components/auth/Login";
 import Home from '../components/Home/Home';
-import { AuthContext } from '../contexts/AuthContext';
 import { useState } from 'react';
+import { AuthProvider } from "../contexts/AuthContext";
+import RequireAuth from '../components/auth/RequireAuth';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />
+        element: <RequireAuth><Home /></RequireAuth>
     },
     {
         path: '/about',
@@ -26,14 +27,12 @@ const router = createBrowserRouter([
     }
 ]);
 
-const AppRoutes = () => {
-    const [token, setToken] = useState(null);
-    return (
-    <AuthContext.Provider value={token}>
+const AppRoutes = () => (
+    <AuthProvider>
         <App>
             <RouterProvider router={router} />
         </App>
-    </AuthContext.Provider>
-)}
+    </AuthProvider>
+)
 
 export default AppRoutes;
