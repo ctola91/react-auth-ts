@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext';
 
-type Props = {}
-
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
     const token = useContext(AuthContext);
     return (
-        <div>Dashboard</div>
-    )
+        <>
+            <h2>Dashboard</h2>
+            <div>Authenticated as {token}</div>
+        </>
+    );
 }
 
 export default Dashboard;
