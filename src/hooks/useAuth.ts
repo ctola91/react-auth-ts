@@ -2,7 +2,9 @@ import { User } from './../types/User';
 import { useState } from 'react';
 import AuthService from '../services/AuthService';
 import { LoginResponse } from '../types/LoginResponse';
+import { redirect } from 'react-router-dom';
 export const useAuth = () => {
+
     const [error, setError] = useState(null);
     const [user, setUser] = useState<User | undefined>(undefined);
     const [token, setToken] = useState<string | undefined>(undefined);
@@ -12,7 +14,7 @@ export const useAuth = () => {
             let result = await AuthService.doLogin(data.email, data.password);
             setUser(result?.user);
             setToken(result?.token);
-
+            redirect('/');
         } catch (e) {
             console.log(e);
         }
