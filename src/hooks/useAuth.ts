@@ -14,7 +14,7 @@ export const useAuth = () => {
             let result = await AuthService.doLogin(data.email, data.password);
             setUser(result?.user);
             setToken(result?.token);
-            redirect('/');
+            return redirect('/');
         } catch (e) {
             console.log(e);
         }
