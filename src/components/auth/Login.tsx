@@ -2,17 +2,22 @@ import React, { ChangeEvent, FormEvent, FormEventHandler } from 'react'
 import { useAuth } from '../../hooks/useAuth';
 import { useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {}
 
 const Login = (props: Props) => {
     const auth = useAuthContext();
+    const navigate = useNavigate();
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
     const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        auth?.signIn({ email, password });
+        const user = auth?.signIn({ email, password });
+        if (user) {
+            navigate('/')
+        }
     }
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
