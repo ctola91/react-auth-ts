@@ -10,7 +10,7 @@ const RequireAuth = ({ children }: RequireAuthProps) => {
     const auth = useAuthContext();
 
     if (!auth?.user) {
-        return <Navigate to="/auth/login" />
+        return <Navigate to="/login" />
     }
     return children;
 }
