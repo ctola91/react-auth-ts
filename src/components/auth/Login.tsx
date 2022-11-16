@@ -1,12 +1,13 @@
 import { ChangeEvent, FormEvent } from 'react'
 import { useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {}
 
 const Login = (props: Props) => {
     const auth = useAuthContext();
+    const navigate = useNavigate()
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
@@ -15,7 +16,7 @@ const Login = (props: Props) => {
         const user = await auth?.signIn({ email, password });
         if (user) {
             console.log(user);
-            return redirect('/');
+            navigate('/');
         }
     }
 
