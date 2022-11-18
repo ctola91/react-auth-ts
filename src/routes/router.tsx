@@ -1,15 +1,18 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom';
 import App from "../App";
 import About from "../components/About/About";
 import Login from "../components/auth/Login";
 import Home from '../components/Home/Home';
 import { AuthProvider } from "../contexts/AuthContext";
 import RequireAuth from '../components/auth/RequireAuth';
+import Dashboard from '../components/Dashboard/Dashboard';
 
+// const location = useLocation();
+// const pathName = location.state?.from || '';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <RequireAuth><Home /></RequireAuth>
+        element: <Home />
     },
     {
         path: '/about',
@@ -19,7 +22,8 @@ const router = createBrowserRouter([
         path: 'login',
         element: <Login />
 
-    }
+    },
+    { path: '/dashboard', element: <RequireAuth><Dashboard /></RequireAuth> }
 ]);
 
 const AppRoutes = () => (

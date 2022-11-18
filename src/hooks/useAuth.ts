@@ -1,7 +1,8 @@
 import { User } from './../types/User';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AuthService from '../services/AuthService';
 import { useLocalStorage } from './useLocalStorage';
+import { redirect } from 'react-router-dom';
 export const useAuth = () => {
     const [error, setError] = useState(null);
     const [user, setUser] = useState<User | undefined>(undefined);
@@ -14,7 +15,7 @@ export const useAuth = () => {
             setUser(result?.user);
             setToken(result?.token);
             // setStorage(result?.token);
-            return user;
+            return result;
         } catch (e) {
             console.log(e);
         }

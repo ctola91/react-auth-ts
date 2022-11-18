@@ -7,6 +7,7 @@ const AUTH_URL = '/auth';
 const doLogin = async (email: string, password: string) => {
     try {
         const { data } = await API.post<LoginResponse>(`${AUTH_URL}/login`, { email, password });
+        console.log(data);
         return data;
     } catch (error: any) {
         if (isError(error)) {

@@ -13,11 +13,12 @@ const Login = (props: Props) => {
 
     const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const user = await auth?.signIn({ email, password });
-        if (user) {
-            console.log(user);
-            navigate('/');
-        }
+        try {
+            const res = await auth?.signIn({ email, password });
+            if (res) {
+                navigate('/dashboard');
+            }
+        } catch (e) { console.log(e) };
     }
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {

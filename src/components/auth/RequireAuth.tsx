@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 type RequireAuthProps = {
@@ -8,9 +8,11 @@ type RequireAuthProps = {
 
 const RequireAuth = ({ children }: RequireAuthProps) => {
     const auth = useAuthContext();
-
+    const location = useLocation();
+    
+    console.log(auth);
     if (!auth?.user) {
-        return <Navigate to="/login" />
+        return <Navigate to="/login" state={{ from: location.pathname }} />
     }
     return children;
 }
