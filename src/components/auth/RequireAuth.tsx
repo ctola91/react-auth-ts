@@ -11,7 +11,7 @@ const RequireAuth = ({ children }: RequireAuthProps) => {
     const location = useLocation();
     
     console.log(auth);
-    if (!auth?.user) {
+    if (!auth?.user && !auth?.token) {
         return <Navigate to="/login" state={{ from: location.pathname }} />
     }
     return children;

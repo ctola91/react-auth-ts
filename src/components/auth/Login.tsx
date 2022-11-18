@@ -1,23 +1,21 @@
 import { ChangeEvent, FormEvent } from 'react'
 import { useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 
 type Props = {}
 
 const Login = (props: Props) => {
     const auth = useAuthContext();
-    const navigate = useNavigate()
+    
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
     const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            const res = await auth?.signIn({ email, password });
-            if (res) {
-                navigate('/dashboard');
-            }
+            await auth.signIn({ email, password });
+            redirect('/');
         } catch (e) { console.log(e) };
     }
 
