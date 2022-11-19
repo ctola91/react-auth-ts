@@ -9,8 +9,7 @@ type RequireAuthProps = {
 const RequireAuth = ({ children }: RequireAuthProps) => {
     const auth = useAuthContext();
     const location = useLocation();
-    
-    console.log(auth);
+
     if (!auth?.user && !auth?.token) {
         return <Navigate to="/login" state={{ from: location.pathname }} />
     }

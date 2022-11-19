@@ -6,6 +6,7 @@ import Home from '../components/Home/Home';
 import { AuthProvider } from "../contexts/AuthContext";
 import RequireAuth from '../components/auth/RequireAuth';
 import Dashboard from '../components/Dashboard/Dashboard';
+import Signup from '../components/auth/Signup';
 
 const AppRoutes = () => (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const AppRoutes = () => (
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
                 </Routes>
             </App>
