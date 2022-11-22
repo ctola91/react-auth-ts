@@ -1,7 +1,11 @@
+import './Home.css';
+
 const Home = () => (
     <>
-        <h1 className="text-3xl font-bold underline">Home</h1>
-        <p>Hello World</p>
+        <div className="home-banner-container">
+            <h2 className="home-banner-title">Home</h2>
+            <p>Hello World</p>
+        </div>
     </>
 )
 

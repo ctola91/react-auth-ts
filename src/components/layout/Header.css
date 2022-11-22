@@ -1,0 +1,6 @@
+header {
+  @apply flex flex-row justify-between items-center bg-white px-5 py-4 border-b;
+}
+header h1 {
+  @apply text-2xl;
+}

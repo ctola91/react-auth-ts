@@ -1,0 +1,6 @@
+.home-banner-container {
+  @apply w-full h-96 flex justify-center items-center flex-col;
+}
+.home-banner-title {
+  @apply text-4xl font-bold underline;
+}
