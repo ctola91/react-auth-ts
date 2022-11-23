@@ -19,7 +19,7 @@ const Header = (): JSX.Element => {
                     <button onClick={toggleMenu}><FontAwesomeIcon icon={faBars} /></button>
                 </div>
                 <div className={isOpen ? "header-menu active" : "header-menu"} >
-                    <ul>
+                    <ul onClick={toggleMenu}>
                         <li className="header-menu-item"><Link to="/">Home</Link></li>
                         <li className="header-menu-item"><Link to="about">About</Link></li>
                         <li className="header-menu-item"><Link to="signup">Signup</Link></li>

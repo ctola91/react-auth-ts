@@ -1,6 +1,8 @@
+import './Footer.css';
+
 const Footer = () => (
     <>
-        <footer>Test Footer</footer>
+        <footer>&copy; ctola91 - 2022</footer>
     </>
 )
 
